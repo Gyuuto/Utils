@@ -94,7 +94,7 @@ void MPI_Output::gather_message ( std::vector<std::tuple<long long, int, std::st
 	}
 
 	typedef std::tuple<long long, int, std::string> data;
-	std::sort( mes.begin(), mes.end(), [&]( const data& d1, const data& d2 ) -> bool {
+	std::stable_sort( mes.begin(), mes.end(), [&]( const data& d1, const data& d2 ) -> bool {
 			if( sort_id ){
 				return (std::get<1>(d1) == std::get<1>(d2) ?
 						std::get<0>(d1) < std::get<0>(d2) : std::get<1>(d1) < std::get<1>(d2));
